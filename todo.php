@@ -12,8 +12,7 @@ include_once "functions.php";
 echo "<h3>Домашнее задание к лекции 4.3 «SELECT из нескольких таблиц»</h3>";
 echo "<h2>Список дел</h2>";
 $dbtabl = 'task';
-
-$sqlToRun = strlen($_POST["tasksSelect"]) ?  $_POST["tasksSelect"] : "";
+$sqlToRun = (isset($_POST["tasksSelect"])) ? $_POST["tasksSelect"]:"";
 
 $sql = "SELECT id,	user_id, assigned_user_id, description, is_done, date_added  FROM ".$dbtabl;
 
@@ -25,7 +24,7 @@ else
         $sql .= " WHERE assigned_user_id = " . $_COOKIE["logged_user"];
     }
 
-if( strlen($_POST["add_new"])) {
+if( isset($_POST["add_new"])) {
 
     //  task: id - user_id - assigned_user_id - description - is_done - date_added
     $addnewtask = $mydb->prepare("INSERT INTO task (user_id, assigned_user_id, description, is_done, date_added) VALUES ( ?, ?, ?, false, NOW())");

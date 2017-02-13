@@ -82,7 +82,7 @@ LOGIN_EXISTS;
             }
         } // пользователь такой найден
         else { // пользователь НЕ найден - зарегистрироваться
-            if (strlen($_POST['pass']) > 7 && strlen($_POST['pass']) < 12) {
+            if (isset($_POST['pass']) && strlen($_POST['pass']) > 7 && strlen($_POST['pass']) < 12) {
                 // сохранить пару логин-пароль
                 $addUser = $mydb->prepare("INSERT INTO user (id, login, password) VALUES (NULL, ?, ?)");
 
