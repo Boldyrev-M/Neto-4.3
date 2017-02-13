@@ -8,8 +8,7 @@
 const MD5_ADD = 'lo9g$4&';
 
 try {
-    $mydb = new PDO("mysql:host=localhost:8889;dbname=mboldyrev;charset=UTF8","root","root");
-    //"mboldyrev","neto0801");
+    $mydb = new PDO("mysql:host=localhost;dbname=mboldyrev;charset=UTF8","mboldyrev","neto0801");
 } catch (PDOException $e) {
     echo 'Подключение не удалось: ' . $e->getMessage();
 }
